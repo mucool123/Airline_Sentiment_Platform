@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airline Services</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #654ea3, #eaafc8);
+            color: white;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        button {
+            background-color: #654ea3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #eaafc8;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label, select, textarea, input[type="submit"] {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+        }
+        textarea {
+            height: 100px;
+        }
+        input[type="submit"] {
+            background-color: #654ea3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #eaafc8;
+        }
+        .airline-images img {
+            width: 100%;
+            margin-top: 10px;
+        }
+		
+		select, input[type="range"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			border: 1px solid #ddd;
+		}
+
+		input[type="range"] {
+			-webkit-appearance: none;
+			background: #ddd;
+		}
+
+		input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			background: #654ea3;
+			cursor: pointer;
+			border-radius: 50%;
+		}
+
+		input[type="range"]::-moz-range-thumb {
+			width: 25px;
+			height: 25px;
+			background: #654ea3;
+			cursor: pointer;
+			border-radius: 50%;
+	    }
+			
+		label {
+			display: block;
+			margin-top: 10px;
+			width: 100%;
+			padding: 10px;
+			color: black; /* Set text color to black */
+		}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Airline Services</h1>
+        <div class="option-select">
+            <button id="writeReview">Write a Review</button>
+            <button id="searchAirline">Search Airlines</button>
+        </div>
+
+        <div id="reviewForm" style="display:none;">
+			<h2>Write Your Review</h2>
+            <form id="sentimentForm"> <!-- Added id="sentimentForm" -->
+			    <!-- Airline Selection Dropdown -->
+			    <label for="airlineReviewSelect">Select Airline:</label>
+			    <select id="airlineReviewSelect">
+				    <option value="US Airways">US Airways</option>
+				    <option value="United">United</option>
+				    <option value="American">American</option>
+				    <option value="Southwest">Southwest</option>
+				    <option value="Delta">Delta</option>
+				    <option value="Virgin America">Virgin America</option>
+			    </select>
+
+			    <!-- Sliding Input for Future Use Likelihood -->
+			    <label for="futureUseSlider">Likelihood of Future Use:</label>
+			    <input type="range" id="futureUseSlider" min="0" max="100" step="1">
+			    <span id="sliderValue">0</span>/100
+
+			    <!-- Review Textbox -->
+			    <label for="reviewText">Your Review:</label>
+			    <textarea id="reviewText"></textarea>
+
+			    <input type="submit" value="Submit Review">
+		    </form>
+		</div>
+
+        <div id="searchForm" style="display:none;">
+            <h2>Search for the Best Airline</h2>
+            <form id="searchAirlineForm">
+                <label for="airlineSelect">Select Airline:</label>
+                <select id="airlineSelect">
+                    <option value="US Airways">US Airways</option>
+                    <option value="United">United</option>
+                    <option value="American">American</option>
+                    <option value="Southwest">Southwest</option>
+                    <option value="Delta">Delta</option>
+                    <option value="Virgin America">Virgin America</option>
+                </select>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+
+        <!-- Image placeholders for each airline -->
+        <div id="images-US-Airways" class="airline-images" style="display:none;">
+			<img src="images/us1.png" alt="US Airways Image 1">
+			<img src="images/us2.png" alt="US Airways Image 2">
+			<img src="images/us3.png" alt="US Airways Image 3">
+	    </div>
+
+        <div id="images-United" class="airline-images" style="display:none;">
+            <img src="images/united1.png" alt="United Image 1">
+            <img src="images/united2.png" alt="United Image 2">
+            <img src="images/united3.png" alt="United Image 3">
+        </div>
+		
+		<div id="images-American" class="airline-images" style="display:none;">
+            <img src="images/american_1.png" alt="United Image 1">
+            <img src="images/american_2.png" alt="United Image 2">
+            <img src="images/american_3.png" alt="United Image 3">
+        </div>
+		
+		<div id="images-Southwest" class="airline-images" style="display:none;">
+            <img src="images/south1.png" alt="United Image 1">
+            <img src="images/south_2.png" alt="United Image 2">
+            <img src="images/south_3.png" alt="United Image 3">
+        </div>
+		
+		<div id="images-Delta" class="airline-images" style="display:none;">
+            <img src="images/delta1.png" alt="United Image 1">
+            <img src="images/delta2.png" alt="United Image 2">
+            <img src="images/delta3.png" alt="United Image 3">
+        </div>
+		
+		<div id="images-Virgin America" class="airline-images" style="display:none;">
+            <img src="images/v1.png" alt="United Image 1">
+            <img src="images/v2.png" alt="United Image 2">
+            <img src="images/v3.png" alt="United Image 3">
+        </div>
+		
+        <!-- Add similar divs for other airlines with their respective images -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+			// Event listener for 'Write a Review' button
+			document.getElementById('writeReview').addEventListener('click', function() {
+				document.getElementById('reviewForm').style.display = 'block';
+				document.getElementById('searchForm').style.display = 'none';
+				//window.location.reload();
+			});
+
+			// Event listener for 'Search Airlines' button
+			document.getElementById('searchAirline').addEventListener('click', function() {
+				document.getElementById('searchForm').style.display = 'block';
+				document.getElementById('reviewForm').style.display = 'none';
+				//window.location.reload();
+			});
+
+			// Event listener for updating the slider value
+			document.getElementById('futureUseSlider').addEventListener('input', function() {
+				const sliderValue = document.getElementById('futureUseSlider').value;
+				document.getElementById('sliderValue').textContent = sliderValue;
+			});
+
+			// Corrected event listener for review form submission
+            document.getElementById('sentimentForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const airline = document.getElementById('airlineReviewSelect').value;
+                const futureUse = document.getElementById('futureUseSlider').value;
+                const reviewText = document.getElementById('reviewText').value;
+                console.log('Review submitted for:', airline);
+                console.log('Future use likelihood:', futureUse);
+                console.log('Review:', reviewText);
+                // Handle review submission here
+            });
+
+			document.getElementById('searchAirlineForm').addEventListener('submit', function(event) {
+			event.preventDefault();
+
+			// Hide all airline image containers
+			document.querySelectorAll('.airline-images').forEach(function(div) {
+				div.style.display = 'none';
+			});
+
+			// Get the selected airline and construct the ID for the corresponding image container
+			const selectedAirline = document.getElementById('airlineSelect').value;
+			const airlineId = 'images-' + selectedAirline.replace(/\s/g, '-');
+			console.log('Selected Airline ID:', airlineId); // Debugging line
+
+			// Display the image container for the selected airline
+			const airlineImagesDiv = document.getElementById(airlineId);
+			if (airlineImagesDiv) {
+				airlineImagesDiv.style.display = 'block';
+			} else {
+				console.log('No div found for the selected airline'); // Debugging line
+			}
+		});
+
+		});
+
+
+    </script>
+</body>
+</html>
